@@ -162,18 +162,17 @@ class interFace():
     try:
         difmod = input("""
     *********************************** 
-    0-Zero Mode(z)--(0-10)            * 
-    1-Peaceful Mode(p)--(0-100)       * 
-    2-Regular Mode(r)--(0-250)        * 
-    3-Hard Mode(h)--(0-500)           * 
-    4-Extreme Mode(e)--(0-2000)       * 
-    5-Impossible Mode(i)--(0-10000)   * 
-                                      *  ****
-    NOTE: If you wanna exit the game  *   **
-    just enter '-1' for guess place   ******** 
-                                             ** 
-    GOOD LUCK :)                      *****  **
-                                          *  **
+    Zero Mode(z)--(0-10)              * 
+    Peaceful Mode(p)--(0-100)         * 
+    Regular Mode(r)--(0-250)          * 
+    Hard Mode(h)--(0-500)             * 
+    Extreme Mode(e)--(0-2000)         * 
+    Impossible Mode(i)--(0-10000)     * 
+                                
+    NOTE: If you wanna exit the game  
+    just enter '-1' for guess place    
+                                             
+    GOOD LUCK :)                      
     """)
 
     # In here, choosing the gamemods..
