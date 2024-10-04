@@ -16,23 +16,15 @@ set desktopPath=YOURDESKTOPPATH
 
 for /F "tokens=2 delims= " %%A in ('date /t') do set datePart=%%A
 
-:: Due to the date format, we first extract the date part.
-
 for /F "tokens=1 delims=." %%B in ('echo %datePart%') do set day=%%B
 for /F "tokens=2 delims=." %%C in ('echo %datePart%') do set month=%%C
 for /F "tokens=3 delims=." %%D in ('echo %datePart%') do set year=%%D
-
-:: Then, we extract the day, month, and year separately.
 
 if "%day%"=="01" (
     cd %desktopPath%
     start powercfg /batteryreport
     echo %month% - %year% Battery report created. >> %desktopPath%\rapor_durumu.txt
 
-:: If the day is 1, it will append a log message starting with echo and create a battery report in the specified directory.
-
 ) else (
-    echo Today: %day%-%month%-%year% >> %desktopPath%\rapor_durumu.txt
-
-:: Otherwise, it will append today's date to the report.
+echo Today: %day%-%month%-%year% >> %desktopPath%\rapor_durumu.txt
 )
