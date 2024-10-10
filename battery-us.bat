@@ -20,11 +20,31 @@ for /F "tokens=1 delims=." %%B in ('echo %datePart%') do set day=%%B
 for /F "tokens=2 delims=." %%C in ('echo %datePart%') do set month=%%C
 for /F "tokens=3 delims=." %%D in ('echo %datePart%') do set year=%%D
 
+if "%month%"=="01" (set LastDay=31)
+else if "%month%"=="03" (set LastDay=31)
+else if "%month%"=="05" (set LastDay=31)
+else if "%month%"=="07" (set LastDay=31)
+else if "%month%"=="08" (set LastDay=31)
+else if "%month%"=="10" (set LastDay=31)
+else if "%month%"=="12" (set LastDay=31)
+
+if "%month%"=="04" (set LastDay=30)
+else if "%month%"=="06" (set LastDay=30)
+else if "%month%"=="09" (set LastDay=30)
+else if "%month%"=="11" (set LastDay=30)
+
+if "%month%"=="02" (
+    set /A leap=year %% 4
+    if "!leap!"=="0" (set LastDay=29)
+    else (set LastDay=28)
+)
+
 if "%day%"=="01" (
     cd %desktopPath%
     start powercfg /batteryreport
-    echo %month% - %year% Battery report created. >> %desktopPath%\rapor_durumu.txt
+    echo !month!-!year! Battery report created. >> %desktopPath%\report_status.txt
 
 ) else (
-echo Today: %day%-%month%-%year% >> %desktopPath%\rapor_durumu.txt
+set /A "daysleft=!LastDay!-!day!"
+echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
 )
