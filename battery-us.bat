@@ -14,6 +14,7 @@
 
 :: THIS APPLICATION WILL RUN EVERY TIME YOU BOOT UP THE COMPUTER.
 
+setlocal enabledelayedexpansion
 set desktopPath=YOURDESKTOPPATH
 
 for /F "tokens=2 delims= " %%A in ('date /t') do set datePart=%%A
