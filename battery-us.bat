@@ -1,5 +1,5 @@
 @echo off
-:: IMPORTANT NOTE: THIS APPLICATION HAS DEVELOPED IN WINDOWS 10. IT MAY NOT WORK ON WINDOWS 11 IF THERE ARE VARIOUS CHANGES. NEED TO TEST {^-^}
+:: IMPORTANT NOTE: THIS APPLICATION CAN RUN IN BOTH WİNDOWS-10 AND WİNDOWS-11
 
 :: DATE FORMAT is "Thu 03.10.2024". Check your date format by typing "date" in CMD and adjust accordingly.
 :: Lines that start with double colons are comment lines.
@@ -76,9 +76,9 @@ if "%day%"=="01" (
     set batteryName=battery-report-!month!-!year!.html
     start powercfg /batteryreport /output !desktopPath!\batteryConfig\!batteryName!
 
-    echo !month!-!year! Battery report created. >> %desktopPath%\report_status.txt
+    echo !month!-!year! Battery report created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
 
 ) else (
-set /A "daysleft=!LastDay!-!day!"
+set /A "daysleft=!LastDay!-!day!+1"
 echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
 )
