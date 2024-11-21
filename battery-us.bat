@@ -15,6 +15,7 @@
 :: THIS APPLICATION WILL RUN EVERY TIME YOU BOOT UP THE COMPUTER.
 
 setlocal enabledelayedexpansion
+
 set desktopPath=YOURDESKTOPPATH
 
 for /F "tokens=2 delims= " %%A in ('date /t') do set datePart=%%A
@@ -86,3 +87,4 @@ if "%day%"=="01" (
     set /A "daysleft=!LastDay!-!day!+1"
     echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
 )
+endlocal
