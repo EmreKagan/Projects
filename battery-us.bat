@@ -76,9 +76,13 @@ if "%day%"=="01" (
     set batteryName=battery-report-!month!-!year!.html
     start powercfg /batteryreport /output !desktopPath!\batteryConfig\!batteryName!
 
-    echo !month!-!year! Battery report created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
-
+    if "%month%"=="01"(
+	    echo New year new dreams ❄️. !month!-!year! dated battery report has been created. >> !desktopPath!\rapor_durumu.txt
+    ) else (
+    	echo !month!-!year! dated battery report has been created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
+    )
+    
 ) else (
-set /A "daysleft=!LastDay!-!day!+1"
-echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
+    set /A "daysleft=!LastDay!-!day!+1"
+    echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
 )
