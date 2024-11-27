@@ -24,40 +24,18 @@ for /F "tokens=1 delims=." %%B in ('echo %datePart%') do set day=%%B
 for /F "tokens=2 delims=." %%C in ('echo %datePart%') do set month=%%C
 for /F "tokens=3 delims=." %%D in ('echo %datePart%') do set year=%%D
 
-if "%month%"=="01" (
-    set LastDay=31
-)
-else if "%month%"=="03" (
-    set LastDay=31
-)
-else if "%month%"=="05" (
-    set LastDay=31
-)
-else if "%month%"=="07" (
-    set LastDay=31
-)
-else if "%month%"=="08" (
-    set LastDay=31
-)
-else if "%month%"=="10" (
-    set LastDay=31
-)
-else if "%month%"=="12" (
-    set LastDay=31
-)
+if "%month%"=="01" set LastDay=31
+if "%month%"=="03" set LastDay=31
+if "%month%"=="05" set LastDay=31
+if "%month%"=="07" set LastDay=31
+if "%month%"=="08" set LastDay=31
+if "%month%"=="10" set LastDay=31
+if "%month%"=="12" set LastDay=31
 
-if "%month%"=="04" (
-    set LastDay=30
-)
-else if "%month%"=="06" (
-    set LastDay=30
-)
-else if "%month%"=="09" (
-    set LastDay=30
-)
-else if "%month%"=="11" (
-    set LastDay=30
-)
+if "%month%"=="04" set LastDay=30
+if "%month%"=="06" set LastDay=30
+if "%month%"=="09" set LastDay=30
+if "%month%"=="11" set LastDay=30
 
 if "%month%"=="02" (
     set /A leap=year %% 4
@@ -69,6 +47,8 @@ if "%month%"=="02" (
     )
 )
 
+set /A "daysleft=!LastDay!-!day!+1"
+
 if "%day%"=="01" (
     if not exist "!desktopPath!\batteryConfig" (
         mkdir "!desktopPath!\batteryConfig"
@@ -77,14 +57,13 @@ if "%day%"=="01" (
     set batteryName=battery-report-!month!-!year!.html
     start powercfg /batteryreport /output !desktopPath!\batteryConfig\!batteryName!
 
-    if "%month%"=="01"(
+    if "%month%"=="01" (
 	    echo New year new dreams ❄️. !month!-!year! dated battery report has been created. >> !desktopPath!\rapor_durumu.txt
     ) else (
     	echo !month!-!year! dated battery report has been created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
     )
     
 ) else (
-    set /A "daysleft=!LastDay!-!day!+1"
     echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
 )
 endlocal
