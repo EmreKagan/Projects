@@ -39,8 +39,17 @@ if "%month%" EQU "11" set LastDay=30
 
 if "%month%" EQU "02" (
     set /A leap=year %% 4
+    set /A cent=year %% 100
+    set /A vcent=year %% 400
 
     if "!leap!" EQU "0" (
+	if "!cent!" EQU "0" (
+	    if "!vcent!" EQU "0" (
+		set LastDay=29    
+	    ) else (
+		set LastDay=28
+	    )
+	)
         set LastDay=29
     )
     else (
