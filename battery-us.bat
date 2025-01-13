@@ -1,5 +1,5 @@
 @echo off
-:: IMPORTANT NOTE: THIS APPLICATION CAN RUN IN BOTH WİNDOWS-10 AND WİNDOWS-11
+:: IMPORTANT NOTE: THIS APPLICATION CAN RUN IN WINDOWS
 
 :: DATE FORMAT is "Thu 03.10.2024". Check your date format by typing "date" in CMD and adjust accordingly.
 :: Lines that start with double colons are comment lines.
@@ -24,22 +24,23 @@ for /F "tokens=1 delims=." %%B in ('echo %datePart%') do set day=%%B
 for /F "tokens=2 delims=." %%C in ('echo %datePart%') do set month=%%C
 for /F "tokens=3 delims=." %%D in ('echo %datePart%') do set year=%%D
 
-if "%month%"=="01" set LastDay=31
-if "%month%"=="03" set LastDay=31
-if "%month%"=="05" set LastDay=31
-if "%month%"=="07" set LastDay=31
-if "%month%"=="08" set LastDay=31
-if "%month%"=="10" set LastDay=31
-if "%month%"=="12" set LastDay=31
+if "%month%" EQU "01" set LastDay=31
+if "%month%" EQU "03" set LastDay=31
+if "%month%" EQU "05" set LastDay=31
+if "%month%" EQU "07" set LastDay=31
+if "%month%" EQU "08" set LastDay=31
+if "%month%" EQU "10" set LastDay=31
+if "%month%" EQU "12" set LastDay=31
 
-if "%month%"=="04" set LastDay=30
-if "%month%"=="06" set LastDay=30
-if "%month%"=="09" set LastDay=30
-if "%month%"=="11" set LastDay=30
+if "%month%" EQU "04" set LastDay=30
+if "%month%" EQU "06" set LastDay=30
+if "%month%" EQU "09" set LastDay=30
+if "%month%" EQU "11" set LastDay=30
 
-if "%month%"=="02" (
+if "%month%" EQU "02" (
     set /A leap=year %% 4
-    if "!leap!"=="0" (
+
+    if "!leap!" EQU "0" (
         set LastDay=29
     )
     else (
@@ -49,21 +50,25 @@ if "%month%"=="02" (
 
 set /A "daysleft=!LastDay!-!day!+1"
 
-if "%day%"=="01" (
+if "%day%" EQU "01" (
+
     if not exist "!desktopPath!\batteryConfig" (
         mkdir "!desktopPath!\batteryConfig"
-    )
-    
+    )    
+
     set batteryName=battery-report-!month!-!year!.html
     start powercfg /batteryreport /output !desktopPath!\batteryConfig\!batteryName!
 
-    if "%month%"=="01" (
-	    echo New year new dreams ❄️. !month!-!year! dated battery report has been created. >> !desktopPath!\rapor_durumu.txt
+    if "%month%" NEQ "01" (
+	echo !month!-!year! dated battery report has been created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
+	echo -------------------------------------------------------------------------------- >> !desktopPath!\rapor_durumu.txt
     ) else (
-    	echo !month!-!year! dated battery report has been created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
+    	echo New year new dreams ❄️. !month!-!year! dated battery report has been created. >> !desktopPath!\rapor_durumu.txt
+	echo -------------------------------------------------------------------------------- >> !desktopPath!\rapor_durumu.txt
     )
-    
-) else (
-    echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
+) 
+else (
+	echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
+	echo -------------------------------------------------------------------------------- >> !desktopPath!\rapor_durumu.txt
 )
 endlocal
