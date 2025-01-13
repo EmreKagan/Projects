@@ -4,7 +4,7 @@
 # You should write desktopPath without any addition like ",!,' etc.
 # Exp: /home/user/Desktop
 # You have to make this file executable.
-# Exp: chmod +x battery-report-unixes.sh
+# Exp: chmod +x battery-report-unixs.sh
 
 # THIS APPLICATION WILL RUN EVERY TIME YOU BOOT UP THE COMPUTER.
 # But I don't know how to do that. You may check "Systemd" in linuxs and "Launchd" in MacOS.
