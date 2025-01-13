@@ -61,14 +61,14 @@ if "%day%" EQU "01" (
 
     if "%month%" NEQ "01" (
 	echo !month!-!year! dated battery report has been created. Here is your reward: 🍪 >> %desktopPath%\report_status.txt
-	echo -------------------------------------------------------------------------------- >> !desktopPath!\rapor_durumu.txt
+	echo -------------------------------------------------------------------------------- >> !desktopPath!\report_status.txt
     ) else (
     	echo New year new dreams ❄️. !month!-!year! dated battery report has been created. >> !desktopPath!\rapor_durumu.txt
-	echo -------------------------------------------------------------------------------- >> !desktopPath!\rapor_durumu.txt
+	echo -------------------------------------------------------------------------------- >> !desktopPath!\report_status.txt
     )
 ) 
 else (
 	echo Today: !day!-!month!-!year!. !daysleft! days left to next report. >> %desktopPath%\report_status.txt
-	echo -------------------------------------------------------------------------------- >> !desktopPath!\rapor_durumu.txt
+	echo -------------------------------------------------------------------------------- >> !desktopPath!\report_status.txt
 )
 endlocal
