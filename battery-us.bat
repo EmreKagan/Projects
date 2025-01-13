@@ -14,11 +14,14 @@
 
 :: THIS APPLICATION WILL RUN EVERY TIME YOU BOOT UP THE COMPUTER.
 
+
+
 setlocal enabledelayedexpansion
 
 set desktopPath=YOURDESKTOPPATH
 
 for /F "tokens=2 delims= " %%A in ('date /t') do set datePart=%%A
+:: In the "Thu 03.10.2024" format, seperate the format and select the SECOND part.
 
 for /F "tokens=1 delims=." %%B in ('echo %datePart%') do set day=%%B
 for /F "tokens=2 delims=." %%C in ('echo %datePart%') do set month=%%C
@@ -36,6 +39,12 @@ if "%month%" EQU "04" set LastDay=30
 if "%month%" EQU "06" set LastDay=30
 if "%month%" EQU "09" set LastDay=30
 if "%month%" EQU "11" set LastDay=30
+
+:: Every year that is exactly divisible by four is a leap year,
+:: except for years that are exactly divisible by 100, 
+:: but these centurial years are leap years if they are exactly divisible by 400. 
+:: For example, the years 1700, 1800, and 1900 are not leap years, but the years 1600 and 2000 are.
+:: FROM WIKIPEDIA
 
 if "%month%" EQU "02" (
     set /A leap=year %% 4
