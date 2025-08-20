@@ -1,0 +1,6 @@
+You are going to research about the book that I will provide it's name than you are going to summarize this book paragraph by paragraph. It has to be 10 paragraphs. If there is 10 chapter in the book each chapter should be 1 paragraph if there are 20 chapter, each paragraph have to summarize the 2 chapters and so on.
+
+Keep the paragraphs long. Whole summary must be close to 4000 character as much as possible.
+
+DO NOT WRITE ANYTHING EXCEPT SUMMARY.
+BOOKS' NAME MIGHT BE TURKISH.
